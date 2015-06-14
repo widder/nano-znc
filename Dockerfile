@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine
 MAINTAINER Thibault NORMAND <me@zenithar.org>
 
 WORKDIR /src
@@ -8,6 +8,7 @@ RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig 
     && wget http://znc.in/releases/znc-1.6.0.tar.gz \
     && tar zxvf znc-1.6.0.tar.gz \
     && cd /src/znc-1.6.0 \
+    && wget https://raw.githubusercontent.com/wired/colloquypush/683d4360d112fad1a741136049e105fad86a5e32/znc/colloquy.cpp -O modules/colloquy.cpp \
     && ./configure --prefix="/opt/znc" --enable-python --enable-perl \
     && make \
     && make install \
@@ -27,5 +28,5 @@ VOLUME /data
 
 EXPOSE 6697
 ENTRYPOINT ["/opt/znc/bin/znc"]
-CMD [""]
+CMD ["--makeconf"]
 
