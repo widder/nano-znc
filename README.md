@@ -3,6 +3,8 @@ ZNC-Docker-Alpine Image
 
 Docker >=1.6 is needed for this!
 
+Image size only ~50 MByte (without Python and Perl support)! 
+
 Setup directory for the ZNC server :
 
 ```
