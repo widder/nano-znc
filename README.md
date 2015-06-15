@@ -15,6 +15,7 @@ To setup the ZNC server :
 Check if znc starts correctly
 ```
 #> make test
+#> make clean
 ```
 
 To start the server:
@@ -27,5 +28,6 @@ ZNC 1.6.0 :
 
   - With ICU
   - Colloquy push module
+  - Playback module for Textual and Colloquy Mobile
   - (Python 3.4.6) (see Dockerfile)
   - (Perl 5.20)
