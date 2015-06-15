@@ -13,8 +13,9 @@ RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig 
     && tar zxvf znc-1.6.0.tar.gz \
     && cd /src/znc-1.6.0 \
     && wget https://raw.githubusercontent.com/wired/colloquypush/683d4360d112fad1a741136049e105fad86a5e32/znc/colloquy.cpp -O modules/colloquy.cpp \
-#    && ./configure --prefix="/opt/znc" --enable-python --enable-perl \
+    && wget https://raw.githubusercontent.com/jpnurmi/znc-playback/master/playback.cpp -O modules/playback.cpp \
     && ./configure --prefix="/opt/znc" \
+#    && ./configure --prefix="/opt/znc" --enable-python --enable-perl \
     && make \
     &&  make install \
     && rm -Rf /src && apk del --purge build-deps \
