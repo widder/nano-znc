@@ -1,7 +1,7 @@
 Nano ZNC
 ========
 
-Docker >=1.6 is needed for this.
+Docker >=1.6 is needed for this!
 
 To setup the ZNC server :
 
