@@ -1,18 +1,22 @@
-Nano ZNC
-========
+ZNC-Docker-Alpine Image
+========================
 
 Docker >=1.6 is needed for this!
 
-To setup the ZNC server :
+Setup directory for the ZNC server :
 
 ```
 #> make dir
+```
+
+Build and config the docker image:
+
+```
 #> make build
 #> make config
 ```
 
-
-Check if znc starts correctly
+Check if znc starts correctly (debug mode)
 ```
 #> make test
 #> make clean
