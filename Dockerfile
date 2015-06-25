@@ -3,9 +3,6 @@ MAINTAINER widder <widder512@yahoo.de>
 
 WORKDIR /src
 
-RUN echo "Build..."
-
-RUN echo "build2"
 RUN apk update
 RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig perl-dev python3-dev icu-dev \
     && apk add -u musl && rm -rf /var/cache/apk/* \
