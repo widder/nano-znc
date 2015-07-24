@@ -3,6 +3,16 @@ MAINTAINER widder <widder512@yahoo.de>
 
 WORKDIR /src
 
+
+RUN apk add --update pwgen
+# Set root password
+RUN echo "root:$(pwgen -s 70 1)" | chpasswd
+
+# Disable root account
+RUN passwd -l root
+
+
+
 RUN apk update
 RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig perl-dev python3-dev icu-dev \
     && apk add -u musl && rm -rf /var/cache/apk/* \
