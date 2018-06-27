@@ -24,15 +24,14 @@ RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig 
     && ./configure --prefix="/opt/znc"  --enable-python \
     && make \
     &&  make install \
-    && rm -Rf /src && apk del --purge build-deps \
+    && rm -Rf /src \
+    #&& apk del --purge build-deps \
     && apk add --update libstdc++ icu \
     && addgroup znc \
     && mkdir /data \
     && adduser -u 5959 -G znc -D -h /data znc \
     && chown -R znc:znc /opt/znc \
-    && chown -R znc:znc /data \
-    && cp /usr/lib/libpython3.6m.so /opt/znc/lib/znc/ \
-    && cp /usr/lib/libpython3.6m.so /opt/znc/lib/
+    && chown -R znc:znc /data
 
 
 #disable ipv6
