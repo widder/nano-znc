@@ -21,7 +21,7 @@ RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig 
     #&& wget https://raw.githubusercontent.com/wired/colloquypush/683d4360d112fad1a741136049e105fad86a5e32/znc/colloquy.cpp -O modules/colloquy.cpp \
     && wget https://bitbucket.org/jmclough/mutter-push/raw/93da5f3e9dcfe5952e7440b1ccbea0b01308a1d6/mutter.py -O modules/mutter.py \
     && wget https://raw.githubusercontent.com/jpnurmi/znc-playback/master/playback.cpp -O modules/playback.cpp \
-    && ./configure --prefix="/opt/znc" \
+    && ./configure --prefix="/opt/znc"  --enable-python \
 #    && ./configure --prefix="/opt/znc" --enable-python --enable-perl \
     && make \
     &&  make install \
