@@ -1,8 +1,7 @@
-FROM alpine:edge
+FROM alpine:latest
 MAINTAINER widder <widder512@yahoo.de>
 
 WORKDIR /src
-
 
 RUN apk add --update pwgen
 # Set root password
@@ -12,14 +11,15 @@ RUN echo "root:$(pwgen -s 70 1)" | chpasswd
 RUN passwd -l root
 
 
-
 RUN apk update
-RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig perl-dev python3-dev icu-dev \
+RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig perl-dev python3-dev python3 icu-dev \
     && apk add -u musl && rm -rf /var/cache/apk/* \
-    && wget http://znc.in/releases/znc-1.6.0.tar.gz \
-    && tar zxvf znc-1.6.0.tar.gz \
-    && cd /src/znc-1.6.0 \
-    && wget https://raw.githubusercontent.com/wired/colloquypush/683d4360d112fad1a741136049e105fad86a5e32/znc/colloquy.cpp -O modules/colloquy.cpp \
+    && pip3 install requests \
+    && wget https://znc.in/releases/znc-1.7.0.tar.gz \
+    && tar zxvf znc-1.7.0.tar.gz \
+    && cd /src/znc-1.7.0 \
+    #&& wget https://raw.githubusercontent.com/wired/colloquypush/683d4360d112fad1a741136049e105fad86a5e32/znc/colloquy.cpp -O modules/colloquy.cpp \
+    && wget https://bitbucket.org/jmclough/mutter-push/raw/93da5f3e9dcfe5952e7440b1ccbea0b01308a1d6/mutter.py -O modules/mutter.py \
     && wget https://raw.githubusercontent.com/jpnurmi/znc-playback/master/playback.cpp -O modules/playback.cpp \
     && ./configure --prefix="/opt/znc" \
 #    && ./configure --prefix="/opt/znc" --enable-python --enable-perl \
