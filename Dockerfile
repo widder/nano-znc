@@ -30,9 +30,9 @@ RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig 
     && mkdir /data \
     && adduser -u 5959 -G znc -D -h /data znc \
     && chown -R znc:znc /opt/znc \
-    && chown -R znc:znc /data
+    && chown -R znc:znc /data \
     && cp /usr/lib/libpython3.6m.so /opt/znc/lib/znc/ \
-    && cp /usr/lib/libpython3.6m.so /opt/znc/lib/ \
+    && cp /usr/lib/libpython3.6m.so /opt/znc/lib/
 
 
 #disable ipv6
