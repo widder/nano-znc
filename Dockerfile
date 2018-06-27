@@ -22,7 +22,6 @@ RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig 
     && wget https://bitbucket.org/jmclough/mutter-push/raw/93da5f3e9dcfe5952e7440b1ccbea0b01308a1d6/mutter.py -O modules/mutter.py \
     && wget https://raw.githubusercontent.com/jpnurmi/znc-playback/master/playback.cpp -O modules/playback.cpp \
     && ./configure --prefix="/opt/znc"  --enable-python \
-#    && ./configure --prefix="/opt/znc" --enable-python --enable-perl \
     && make \
     &&  make install \
     && rm -Rf /src && apk del --purge build-deps \
@@ -32,6 +31,8 @@ RUN apk add --update -t build-deps make gcc g++ git wget bison openssl-dev swig 
     && adduser -u 5959 -G znc -D -h /data znc \
     && chown -R znc:znc /opt/znc \
     && chown -R znc:znc /data
+    && cp /usr/lib/libpython3.6m.so /opt/znc/lib/znc/ \
+    && cp /usr/lib/libpython3.6m.so /opt/znc/lib/ \
 
 
 #disable ipv6
